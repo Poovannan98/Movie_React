@@ -1,6 +1,6 @@
 .movie-container {
-  /* background-color: orange; */
   width: 340px;
+  height: min-content;
 }
 
 .movie-specs {
@@ -16,8 +16,9 @@
 }
 
 .movie-name {
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
+  font-weight: bold;
 }
 
 .movie-summary {
@@ -25,12 +26,28 @@
 }
 
 .movie-rating {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .movie-list-container {
   display: flex;
+  margin-top: 20px;
   gap: 16px;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.body{
+  font-family:Roboto, sans-serif;
+}
+
+.notfound{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;    
+}
+.movie-details-container{
+  max-width: 750px;
+  padding: 16px;
 }

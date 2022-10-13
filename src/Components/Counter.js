@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
-import Button from 'react-bootstrap/Button';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
+import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
+
 
 function Counter() {
 
     const [like,setLike] = useState(0);
     const [disLike,setDisLike] = useState(0);
-  return <>  
-    <Button variant="success" onClick={() => {setLike(like+1)} }>👍 {like}</Button>
+  return <>
+   <Badge badgeContent={like} color="primary">  
+    <IconButton  onClick={() => {setLike(like+1)} }><ThumbUpOffAltIcon color="primary"/></IconButton></Badge>
     &nbsp;
-    <Button variant="danger" onClick={() => {setDisLike(disLike+1)} }>👎 {disLike}</Button>    
+    <Badge badgeContent={disLike} color="error">
+    <IconButton  onClick={() => {setDisLike(disLike+1)} }><ThumbDownOffAltIcon color="error"/></IconButton></Badge> 
+    
   </>
 }
 
