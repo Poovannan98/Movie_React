@@ -20,7 +20,7 @@ function Movie( {movie, id}) {
     color:movie.rating >= 8.5 ? "green" : "red" };  
   const navigate = useNavigate();
 
-  return <>
+   return <>
   <Card className='movie-container'>
     <img src={movie.poster} alt={movie.name} className='movie-poster'/>
     <CardContent>

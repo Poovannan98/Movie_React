@@ -6,7 +6,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 function CURD() {
 
 
-  return <>
+    return <>
 
     <IconButton><EditIcon color="primary"/></IconButton>
     &nbsp;   
