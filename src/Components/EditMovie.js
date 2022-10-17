@@ -1,54 +1,53 @@
-import React,{useState,useEffect} from 'react'
+import {useEffect,useState} from 'react'
 import './AddMovie.css'
-import {useParams,useNavigate} from 'react-router-dom'
-function EditMovie(props) {
+import {useNavigate, useParams} from 'react-router-dom'
+function EditMovie(){
 
-    let params = useParams();
-    let navigate = useNavigate();
-    let [name,setName] = useState("");
-    let [rating,setRating] = useState("");
-    let [poster,setPoster] = useState("");
-    let [summary,setSummary] = useState("");
-
-    useEffect(()=>{
-        if(params.id<props.data.users.length)
-        {
-            setName(props.data.users[params.id].name)
-            setRating(props.data.users[params.id].email)
-            setPoster(props.data.users[params.id].mobile)
-            setSummary(props.data.users[params.id].batch)
-        }
-        else
-        {
-            navigate('/dashboard')
-        }
-    },[])
+    const {id} = useParams();
+    const navigate = useNavigate();
+    const [movie,setMovie] = useState({});
+    const [name1,setName] = useState();
+    const [rating1,setRating] = useState();
+    const [poster1,setPoster] = useState();
+    const [summary1,setSummary] = useState();
+    const [trailer1,setTrailer] = useState();
 
     
-    let handleSubmit = ()=>{
-      let newData = {name,email,mobile,batch}
-      //take a deep clone of the state
-      let data = [...props.data.users]
-      //replace the data to the new clone
-      data.splice(params.id,1,newData)
-      //update the state with the new cloned variable
-      props.data.setUsers(data)
-      navigate('/dashboard')
+    
+    useEffect(() => {
+      fetch(`https://632161ec82f8687273b0af97.mockapi.io/movies/${id}`)
+        .then((data) => data.json())
+        .then((mvs) => setMovie(mvs));          
+    });   
+   
+  const updateMovie =(()=> {
+    fetch(`https://632161ec82f8687273b0af97.mockapi.io/movies/${id}`, {
+      method:"PUT",
+      body: JSON.stringify({
+        name:name1, 
+        rating:rating1, 
+        poster:poster1, 
+        summary:summary1, 
+        trailer:trailer1
+      }),
+      headers: {"content-Type": "application/json"}
+  })
+    .then(navigate("/movielist"))
+});
 
-
-
-    }
+    
+    
   return <>
   <div className="addmovie-container">
       <div className="addmovie-form">
         <div className="addmovie-form-content">
-          <h3 className="addmovie-form-title">Add Movies</h3>
+          <h3 className="addmovie-form-title">Edit Movie</h3>
           <div className="form-group mt-3">
             <label>Movie Name</label>
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="Enter Movie Name"
+              defaultValue={movie.name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
@@ -57,7 +56,7 @@ function EditMovie(props) {
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="Enter Rating"
+              defaultValue={movie.rating}
               onChange={(e) => setRating(e.target.value)}
             />
           </div>
@@ -66,7 +65,7 @@ function EditMovie(props) {
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="Enter Poster URL"
+              defaultValue={movie.poster}
               onChange={(e) => setPoster(e.target.value)}
             />
           </div>
@@ -75,14 +74,24 @@ function EditMovie(props) {
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="Enter Summary"
+              defaultValue={movie.summary}
               onChange={(e) => setSummary(e.target.value)}
+            />
+          </div>
+          <div className="form-group mt-3">
+          <label>Trailer</label>
+            <input
+              type="text"
+              className="form-control mt-1"
+              defaultValue={movie.trailer}
+              onChange={(e) => setTrailer(e.target.value)}
             />
           </div>
           <div className="d-grid gap-2 mt-3">
             <button  className="btn btn-primary"
-              onClick={()=>handleSubmit()}>
-              Edit Movie
+              onClick={()=>updateMovie()}
+              >
+              Update Movie
             </button>                  
           </div>          
         </div>

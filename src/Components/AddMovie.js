@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './AddMovie.css'
 // import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
+import Paper from '@mui/material/Paper';
 
 function AddMovie({movieList, setMovieList}) {
 
@@ -18,6 +19,7 @@ function AddMovie({movieList, setMovieList}) {
   };
   console.log(newMovie);
   return <>
+ 
    <div className="addmovie-container">
       <div className="addmovie-form">
         <div className="addmovie-form-content">
@@ -68,6 +70,7 @@ function AddMovie({movieList, setMovieList}) {
         </div>
       </div>
     </div>
+   
   </>
 }
 

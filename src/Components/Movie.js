@@ -11,9 +11,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import InfoIcon from '@mui/icons-material/Info';
 import {useNavigate} from 'react-router-dom';
-import CURD from './CURD';
+// import CURD from './CURD';
 
-function Movie( {movie, id}) {
+function Movie( {movie, id, deleteButton, editButton}) {
 
   const [show, setShow] = useState(false);
   const styles= {
@@ -41,9 +41,13 @@ function Movie( {movie, id}) {
       
         {show ? <p className='movie-summary'>{movie.summary}</p> : null  }
         </CardContent>
-        <CardActions disableSpacing>
+        <CardActions>
           <Counter/>
-          <CURD/>
+          <div className="view">
+            {editButton}
+            {deleteButton}
+          </div>
+          {/* <CURD/> */}
         </CardActions>
   </Card> 
   </>

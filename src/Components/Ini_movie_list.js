@@ -86,5 +86,21 @@ export const Ini_movie_list = [
       summary:
         "Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him.",
       trailer: "https://www.youtube.com/embed/NgsQ8mVkN8w"
+    },
+    {
+      "id": "108",
+      "name": "Thiruchitrambalam",
+      "poster": "https://m.media-amazon.com/images/M/MV5BYTNkNjQ4OTUtN2RjOS00NDU4LWI1MzItNWJlZjY2MmYxNDEyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg",
+      "rating": 7,
+      "summary": "Mithran Jawahar delivers a sweet-natured drama in which he plays with familiar tropes, but presents them with just the right amount of freshness",
+      "trailer": "https://www.youtube.com/watch?v=tNnPHz1u3RM"
+    },
+    {
+      "id": "109",
+      "name": "Ponniyin Selvan: Part 1",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTBkNTAzNGMtNmUwNi00ZmZkLTk3MjEtZWY1NzczYTQyNTMyXkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg",
+      "rating": 7.6,
+      "summary": "Mani Ratnam finally brings the dream of many Tamil filmmakers alive with this spectacular adaptation that superbly captures the intrigue, thrills and page-turning quality of the books.",
+      "trailer": "https://www.youtube.com/watch?v=D4qAQYlgZQs"
     }
   ];

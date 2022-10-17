@@ -51,3 +51,8 @@
   max-width: 750px;
   padding: 16px;
 }
+.view{
+  display: flex;
+  align-content: flex-end;
+  
+}

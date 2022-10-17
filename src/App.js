@@ -4,19 +4,21 @@ import './Components/AddMovie.css'
 import AddMovie from './Components/AddMovie';
 import MovieList from './Components/MovieList';
 import ColorGame from './Components/ColorGame';
-import { useState } from 'react';
-import { Routes, Route, Navigate} from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Routes, Route, Navigate,useParams} from "react-router-dom";
 import * as React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import {Ini_movie_list} from "./Components/Ini_movie_list"
+// import {Ini_movie_list} from "./Components/Ini_movie_list"
 import MovieDetails from './Components/MovieDetails';
 import ResponsiveAppBar from './Components/AppBar';
+import Paper from '@mui/material/Paper';
+import EditMovie from './Components/EditMovie';
 
 function App() {
 
-  const [movieList,setMovieList] = useState(Ini_movie_list)
-  
+  // const [movieList,setMovieList] = useState(Ini_movie_list)
+  const [movieList,setMovieList] = useState([])  //API Method
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',
@@ -29,6 +31,7 @@ function App() {
   });
 
   const [theme,setTheme] = useState(true)
+  const {id} = useParams();
 
   const theme1= theme ? lightTheme : darkTheme  
 
@@ -41,22 +44,28 @@ function App() {
       </>
   } 
   
+  useEffect(() => {
+    fetch("https://632161ec82f8687273b0af97.mockapi.io/movies")
+      .then((data) => data.json())
+      .then((mv) => setMovieList(mv));
+  }, []);
   return <> 
    <ThemeProvider theme={theme1}>
-      
-       
+   <Paper elevation={3} />
       {/* <Navi theme={darkTheme}/> */}
       <ResponsiveAppBar theme={theme} setTheme={setTheme}/>
       <Routes>
         <Route path="/" element={<h1>Welcome to Movies app!</h1>} />
         <Route path="/colorgame" element={<ColorGame/>} />
         <Route path="/addmovie" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
-        <Route path="/movielist" element={<MovieList movieList={movieList}/> } />
+        <Route path="/movielist" element={<MovieList/> } />
         <Route path="/movielist/:id" element={<MovieDetails movieList={movieList} /> } />
+        <Route path="/edit/:id" element={<EditMovie id={id} /> } />
         <Route path="/flims" element={<Navigate replace to = "/movielist"/>} />
         <Route path='*' element={<NotFound/>} />
       </Routes>   
       <CssBaseline /> 
+      <Paper />
     </ThemeProvider>
   </>
 }
