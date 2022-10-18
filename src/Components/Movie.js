@@ -41,9 +41,9 @@ function Movie( {movie, id, deleteButton, editButton}) {
       
         {show ? <p className='movie-summary'>{movie.summary}</p> : null  }
         </CardContent>
-        <CardActions>
-          <Counter/>
-          <div className="view">
+        <CardActions className="show1">
+          <div className='show2'><Counter/></div>
+          <div className="show">
             {editButton}
             {deleteButton}
           </div>

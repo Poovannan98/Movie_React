@@ -1,6 +1,13 @@
 
 .show{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
+.show1{
+  display: flex;
+  justify-content: space-between;
+}
+.show2{
+  display: flex;
+  justify-content: flex-start;
+}

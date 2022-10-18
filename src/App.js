@@ -18,7 +18,8 @@ import EditMovie from './Components/EditMovie';
 function App() {
 
   // const [movieList,setMovieList] = useState(Ini_movie_list)
-  const [movieList,setMovieList] = useState([])  //API Method
+  //API Method
+  const [movieList,setMovieList] = useState([])  
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',
